@@ -1,13 +1,15 @@
 # Earthquake Streaming Project (P6)
 
-This project continues the earthquake-themed streaming pipeline developed in earlier Buzzline assignments.  
-It demonstrates how to organize a real-time data engineering project using producers, consumers, and a local database.
+This project continues the earthquake-themed streaming pipeline from earlier Buzzline assignments.  
+It demonstrates how to organize and initialize a real-time data project with Kafka producers and consumers, storing 
+messages in SQLite for analysis and visualization.
+
 
 ---
 
-## Environment
+## Environment Setup
 
-- **Operating System:** Windows 10 using **WSL2 (Ubuntu 22.04)**  
+- **Operating System:** Windows 11 using **WSL2 (Ubuntu 22.04)**  
 - **Editor:** Visual Studio Code (with WSL:Ubuntu integration)  
 - **Python Environment:** `.venv` virtual environment created inside WSL  
 - **Dependencies:** See `requirements.txt`  
@@ -15,8 +17,8 @@ It demonstrates how to organize a real-time data engineering project using produ
 To recreate the environment:
 ```bash
 # Clone the repo into WSL
-git clone https://github.com/14dstcyr/buzzline-06-stcyr.git
-cd buzzline-06-stcyr
+git clone https://github.com/14dstcyr/buzzline-06-earthquake-stcyr.git
+cd buzzline-06-earthquake-stcyr
 
 # Create and activate venv
 python3 -m venv .venv
