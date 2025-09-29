@@ -4,3 +4,9 @@ __pycache__/
 *.db
 *.log
 
+# Ignore Kafka / app logs
+log/
+logs/
+
+data/*.json
+logs/
