@@ -6,33 +6,33 @@ This repository documents the progression of a custom earthquake‑themed stream
 
 ## CC6.1 – Kickoff & Connections
 
-- Focus: Set up the initial streaming project with environment prep.
+- **Focus**: Set up the initial streaming project with environment prep.
 
-- Key Work: Verified WSL2 + VS Code integration, created .venv, connected Kafka, and established folder structure (producers/, consumers/, utils/, data/).
+- **Key Work**: Verified WSL2 + VS Code integration, created .venv, connected Kafka, and established folder structure (producers/, consumers/, utils/, data/).
 
-- Outcome: Ready foundation for building earthquake streaming components.
+- **Outcome**: Ready foundation for building earthquake streaming components.
 
 ## CC6.2 – Getting Started
 
-- Focus: Create the first producer and consumer scripts.
+- **Focus**: Create the first producer and consumer scripts.
 
-- Producer: Generated simple earthquake‑like messages (JSON/CSV) and published them to a Kafka topic.
+- **Producer**: Generated simple earthquake‑like messages (JSON/CSV) and published them to a Kafka topic.
 
-- Consumer: Subscribed, read messages, and stored them into SQLite.
+- **Consumer**: Subscribed, read messages, and stored them into SQLite.
 
-- Outcome: Proved end‑to‑end pipeline works with simulated data.
+- **Outcome**: Proved end‑to‑end pipeline works with simulated data.
 
 ## CC6.3 – Earthquake Streaming Project
 
-- Focus: Expand to visualize earthquake events.
+- **Focus**: Expand to visualize earthquake events.
 
-- Producer: Continued using earthquake‑themed messages (simulated).
+- **Producer**: Continued using earthquake‑themed messages (simulated).
 
-- Consumer: Stored messages in SQLite and displayed dynamic Matplotlib charts (rolling counts, magnitude plots).
+- **Consumer**: Stored messages in SQLite and displayed dynamic Matplotlib charts (rolling counts, magnitude plots).
 
-- Challenges: Adjusting chart sizing and animation refresh while messages streamed.
+- **Challenges**: Adjusting chart sizing and animation refresh while messages streamed.
 
-- Outcome: Interactive consumer that made earthquake activity visible in near‑real‑time.
+- **Outcome**: Interactive consumer that made earthquake activity visible in near‑real‑time.
 
 ## P6 – Custom Streaming Pipeline (Final Project)
 
