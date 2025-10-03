@@ -26,3 +26,10 @@ source .venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
+
+flowchart LR
+    A[Producer: earthquake_producer_stcyr.py] -->|JSON events| B[(Kafka Topic: eq-topic)]
+    B --> C[Consumer: earthquake_consumer_stcyr.py]
+    B --> D[Consumer with Viz: earthquake_consumer_viz_stcyr.py]
+    D --> E[📈 Line Chart: Magnitudes]
+    D --> F[📊 Bar Chart: Counts by Location]
