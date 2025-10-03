@@ -17,6 +17,7 @@ storing messages in SQLite for analysis and visualization.
 ```bash
 git clone https://github.com/14dstcyr/buzzline-06-earthquake-stcyr.git
 cd buzzline-06-earthquake-stcyr
+```
 
 # Create and activate venv
 python3 -m venv .venv
