@@ -20,6 +20,12 @@ To recreate the environment:
 git clone https://github.com/14dstcyr/buzzline-06-earthquake-stcyr.git
 cd buzzline-06-earthquake-stcyr
 
+## Environment Variables
+
+Create a `.env` file in the project root with:
+
+EARTHQUAKE_TOPIC=eq-topic
+
 # Create and activate venv
 python3 -m venv .venv
 source .venv/bin/activate
