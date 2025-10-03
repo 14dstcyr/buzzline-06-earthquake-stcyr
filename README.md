@@ -32,17 +32,17 @@ EARTHQUAKE_TOPIC=eq-topic
 
 ### Running the project
 
-Start ZooKeeper and Kafka Broker (in separate terminals):
+#### 1. Start ZooKeeper and Kafka Broker (in separate terminals):
 bin/zookeeper-server-start.sh config/zookeeper.properties
 bin/kafka-server-start.sh config/server.properties
 
-Run the Producer (generates earthquake messages):
+#### 2. Run the Producer (generates earthquake messages):
 python earthquake_producer_stcyr.py
 
-Run the Consumer (prints events to console):
+#### 3. Run the Consumer (prints events to console):
 python earthquake_consumer_stcyr.py
 
-Run the Consumer with Visualization (real-time charts):
+#### 4. Run the Consumer with Visualization (real-time charts):
 python earthquake_consumer_viz_stcyr.py
 
 
