@@ -1,5 +1,5 @@
 import matplotlib
-matplotlib.use("Qt5Agg")   # ensure GUI works in WSLg
+matplotlib.use("TkAgg")   
 
 import os
 import json
