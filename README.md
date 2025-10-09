@@ -1,8 +1,21 @@
-# Earthquake Streaming Project (P6) Progression
+# Earthquake Streaming Project (P6-P7) Progression
 
-This repository documents the progression of a custom earthquake‑themed streaming pipeline project through CC6.1 → CC6.2 → CC6.3 → P6. Each checkpoint builds toward a more advanced, real‑time analytics system using Kafka, SQLite, and dynamic visualization.
+This project builds upon the earthquake-themed streaming pipeline developed across previous Buzzline assignments (CC6–CC7).
+It demonstrates real-time data ingestion, analysis, and visualization using a Kafka producer–consumer pipeline.
+
+The final version introduces enhanced data visualizations, automatic chart snapshots, and sliding-window analysis.
 
 ---
+
+## Environment Setup
+
+- Operating System: Windows 11 using WSL 2 (Ubuntu 22.04)
+
+- Editor: Visual Studio Code (with “WSL: Ubuntu” integration)
+
+- Python Version: 3.11
+
+- Virtual Environment: .venv
 
 ## CC6.1 – Kickoff & Connections
 
@@ -83,12 +96,16 @@ This custom streaming pipeline fetches live earthquake events from the **USGS Ge
 
 - **Dependencies**: See requirements.txt
 
-### Setup Commands
+### Environment Setup Commands
 ```bash
-git clone https://github.com/14dstcyr/buzzline-06-earthquake-stcyr.git
-cd buzzline-06-earthquake-stcyr
+# Navigate to project folder
+cd ~/projects/buzzline-06-earthquake-stcyr
+
+# Create and activate venv
 python3 -m venv .venv
 source .venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
@@ -99,50 +116,107 @@ Create a `.env` file in the project root with:
 EARTHQUAKE_TOPIC=eq-topic
 ```
 
-### Running the project
-#### For CC6.1 - CC6.3
+## Streaming Pipeline Overview
+### Producer – earthquake_producer_stcyr.py
 
-#### 1. Start ZooKeeper and Kafka Broker (in separate terminals):
+- Connects to Kafka at localhost:9092
+
+- Publishes simulated earthquake events to the topic defined in .env
+
+- Each event includes:
+
+    - id
+
+    - magnitude
+
+    - location
+
+    - depth_km
+
+### Consumer – earthquake_consumer_stcyr.py
+
+- Subscribes to the same Kafka topic
+
+- Continuously reads live messages
+
+- Parses and stores recent events in a sliding 5-minute window
+
+- Generates three dynamic visualizations that update in real time
+
+## New Features for P7
+### Automatic Labeled Snapshots
+- The consumer now saves high-resolution PNG images automatically every 60 seconds.
+
+- Each file includes a title and labeled filename, e.g.
+```bash
+images/earthquake_viz_snapshot_003_18quakes_20251009_142612.png
+```
+- Titles in saved charts show snapshot number and total earthquakes processed.
+
+### Fully Automated Visualization Updates
+- The charts refresh every 2 seconds with new Kafka messages.
+
+- The visualization resets cleanly between frames for smooth performance.
+
+### Sliding-Window Data Management
+- Keeps only the last 5 minutes of earthquake data in memory.
+
+- Prevents clutter and enables a live “moving window” effect.
+
+### Improved Stability
+- Optional use of `plt.clf()` for full figure refreshes to avoid ghosting.
+
+- Automatic creation of the `/images` folder if missing.
+
+- Built-in error handling for incomplete or missing data fields.
+
+### Running the project
+#### 1. Start ZooKeeper and Kafka Broker (if applicable)(in separate terminals):
 ```
 bin/zookeeper-server-start.sh config/zookeeper.properties
 bin/kafka-server-start.sh config/server.properties
 ````
 
-#### 2. Run the **basic producer** (generates earthquake messages):
+#### 2. Run the producer in a new terminal (generates earthquake messages):
 ```
+source .venv/bin/activate
 python earthquake_producer_stcyr.py
 ```
 
-#### 3. Run the **basic consumer** (prints events to console):
+#### 3. Run the consumer in a new terminal (prints events to console):
 ```
+source .venv/bin/activate
 python earthquake_consumer_stcyr.py
 ```
 
-#### 4. Run the **consumer with visualization** (real-time charts):
-```
-python earthquake_consumer_viz_stcyr.py
-```
 
-### For P6 (Final Project)
-- **Terminal A – Start Producer**
-  ```
-  source .venv/bin/activate
-  python producers/producer_usgs_stcyr.py
-  ```
+## Visualizations
 
-- **Terminal B – Start Consumer (opens live chart)**
-  ```
-  source .venv/bin/activate
-  python consumers/consumer_stcyr.py
-  ```
+### Time Series of Earthquake Frequency (per minute)
+Displays the count of earthquake events per minute in the last 5 minutes.
+Helps visualize short-term seismic activity patterns.
+
+## Histogram of Magnitudes
+Shows the distribution of earthquake magnitudes in the current time window.
+Helps identify the relative frequency of weaker vs. stronger events.
+
+## Animated World Map (Sliding Window)
+Plots recent earthquakes by latitude / longitude on a simplified global map.
+Older points fade gradually to highlight new activity.
 
 
-### Dataflow
-```
-flowchart LR
-    A[Producer: earthquake_producer_stcyr.py] -->|JSON events| B[(Kafka Topic: eq-topic)]
-    B --> C[Consumer: earthquake_consumer_stcyr.py]
-    B --> D[Consumer with Viz: earthquake_consumer_viz_stcyr.py]
-    D --> E[📈 Line Chart: Magnitudes]
-    D --> F[📊 Bar Chart: Counts by Location]
-```
+
+
+## Final Notes
+
+### This project demonstrates:
+
+- Real-time streaming data ingestion with Apache Kafka
+
+- Sliding-window analytics
+    
+- Multi-panel visualization with Matplotlib
+    
+- Environment management with .env and .venv
+    
+- Automated documentation through periodic image saving
