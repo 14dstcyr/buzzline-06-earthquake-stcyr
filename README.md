@@ -204,6 +204,7 @@ Helps identify the relative frequency of weaker vs. stronger events.
 Plots recent earthquakes by latitude / longitude on a simplified global map.
 Older points fade gradually to highlight new activity.
 
+<img width="975" height="840" alt="image" src="https://github.com/user-attachments/assets/0696cdfb-48d3-47fd-872c-e8bad90381b5" />
 
 
 
